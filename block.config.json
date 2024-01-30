@@ -1,0 +1,24 @@
+{
+  "name": "razorpay",
+  "type": "package",
+  "blockId": "V9WSh95wP8Co3UxGRwNLN",
+  "source": {
+    "https": null,
+    "ssh": null,
+    "branch": "block_razorpay"
+  },
+  "parentBlockIDs": [],
+  "isPublic": true,
+  "supportedAppblockVersions": [
+    "1.0.0"
+  ],
+  "repoType": "mono",
+  "dependencies": {
+    "register": {
+      "directory": "register"
+    },
+    "shared": {
+      "directory": "shared"
+    }
+  }
+}

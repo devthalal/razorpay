@@ -1,0 +1,20 @@
+{
+  "blockId": "-eVVAxfb_o_UAw5GzK8q4",
+  "name": "register",
+  "type": "function",
+  "source": {
+    "https": null,
+    "ssh": null,
+    "branch": "block_register"
+  },
+  "parentBlockIDs": [
+    "V9WSh95wP8Co3UxGRwNLN"
+  ],
+  "repoType": "mono",
+  "language": "nodejs",
+  "supportedAppblockVersions": [
+    "1.0.0"
+  ],
+  "isPublic": true,
+  "start": "node index.js"
+}
