@@ -3,8 +3,8 @@
   "type": "package",
   "blockId": "V9WSh95wP8Co3UxGRwNLN",
   "source": {
-    "https": null,
-    "ssh": null,
+    "https": "https://github.com/devthalal/razorpay.git",
+    "ssh": "git@github.com:devthalal/razorpay.git",
     "branch": "block_razorpay"
   },
   "parentBlockIDs": [],

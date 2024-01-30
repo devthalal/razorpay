@@ -3,8 +3,8 @@
   "name": "register",
   "type": "function",
   "source": {
-    "https": null,
-    "ssh": null,
+    "https": "https://github.com/devthalal/razorpay.git",
+    "ssh": "git@github.com:devthalal/razorpay.git",
     "branch": "block_register"
   },
   "parentBlockIDs": [
