@@ -14,11 +14,14 @@
   ],
   "repoType": "mono",
   "dependencies": {
-    "register": {
-      "directory": "register"
-    },
     "shared": {
       "directory": "shared"
+    },
+    "razorpay_subscriptions": {
+      "directory": "razorpay_subscriptions"
+    },
+    "vault": {
+      "directory": "vault"
     }
   }
 }

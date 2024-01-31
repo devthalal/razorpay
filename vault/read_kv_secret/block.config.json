@@ -1,0 +1,21 @@
+{
+  "blockId": "NQkaykbdDd-SkPz7rocnB",
+  "name": "read_kv_secret",
+  "type": "function",
+  "source": {
+    "https": "https://github.com/devthalal/razorpay.git",
+    "ssh": "git@github.com:devthalal/razorpay.git",
+    "branch": "block_read_kv_secret"
+  },
+  "parentBlockIDs": [
+    "V9WSh95wP8Co3UxGRwNLN",
+    "kansVpCSrHOZPy4izEO9i"
+  ],
+  "repoType": "mono",
+  "language": "nodejs",
+  "supportedAppblockVersions": [
+    "1.0.0"
+  ],
+  "isPublic": true,
+  "start": "node index.js"
+}
