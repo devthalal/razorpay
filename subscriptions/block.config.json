@@ -1,0 +1,35 @@
+{
+  "blockId": "k2mPdGHgM-STUF3EGxO5K",
+  "name": "subscriptions",
+  "type": "package",
+  "source": {
+    "https": "https://github.com/devthalal/razorpay.git",
+    "ssh": "git@github.com:devthalal/razorpay.git",
+    "branch": "block_subscriptions"
+  },
+  "parentBlockIDs": [
+    "V9WSh95wP8Co3UxGRwNLN"
+  ],
+  "repoType": "mono",
+  "supportedAppblockVersions": [
+    "1.0.0"
+  ],
+  "isPublic": true,
+  "dependencies": {
+    "create_plan": {
+      "directory": "create_plan"
+    },
+    "create_subscription": {
+      "directory": "create_subscription"
+    },
+    "create_subscription_link": {
+      "directory": "create_subscription_link"
+    },
+    "list_plans": {
+      "directory": "list_plans"
+    },
+    "get_plan": {
+      "directory": "get_plan"
+    }
+  }
+}

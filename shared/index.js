@@ -1,6 +1,7 @@
 /* eslint-disable import/extensions */
 import vault from './vault/index.js'
 import getRazorpayInstance from './razorpay/index.js'
+import prisma from './prisma/index.js'
 
 /**
  * Function to format and send response
@@ -43,4 +44,4 @@ const healthCheck = (req, res) => {
   return false
 }
 
-export default { vault, getRazorpayInstance, sendResponse, getBody, healthCheck }
+export default { vault, getRazorpayInstance, sendResponse, getBody, healthCheck, prisma }

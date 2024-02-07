@@ -1,0 +1,62 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("BB_DATABASE_URL")
+}
+
+model User {
+  id                String  @id @default(uuid())
+  first_name        String
+  middle_name       String?
+  last_name         String?
+  country_code      String?
+  phn_no            String? @unique
+  display_name      String
+  display_picture   String?
+  status            Int     @default(4)
+  is_email_verified Boolean @default(false)
+
+  created_at DateTime? @default(now())
+  updated_at DateTime? @updatedAt
+
+  subscriptions Subscription[]
+}
+
+model Subscription {
+  id        String   @id @default(cuid())
+  userId    String
+  planId    String
+  status    String // Active, Inactive, Cancelled, etc.
+  startDate DateTime
+  endDate   DateTime
+  metadata  Json?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  isSynced  Boolean  @default(false)
+
+  user User @relation(fields: [userId], references: [id])
+  plan Plan @relation(fields: [planId], references: [id])
+}
+
+model Plan {
+  id            String   @id @default(cuid())
+  name          String
+  amount        Int
+  currency      String
+  interval      String
+  intervalCount Int
+  description   String?
+  isActive      Boolean  @default(true)
+  isSynced      Boolean  @default(false)
+  metadata      Json?
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+
+  subscriptions Subscription[]
+}
