@@ -20,6 +20,7 @@
   "license": "ISC",
   "dependencies": {
     "@prisma/client": "^5.9.1",
+    "@vinejs/vine": "^1.7.1",
     "hashi-vault-js": "^0.4.14",
     "razorpay": "^2.9.2"
   },

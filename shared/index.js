@@ -3,5 +3,6 @@ import vault from './vault/index.js'
 import razorpay from './razorpay/index.js'
 import prisma from './prisma/index.js'
 import utils from './utils/index.js'
+import validateBody from './validations/index.js'
 
-export default { ...utils, vault, razorpay, prisma }
+export default { ...utils, vault, razorpay, prisma, validateBody }
