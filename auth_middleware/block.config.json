@@ -1,0 +1,20 @@
+{
+  "blockId": "KHPAtKoVsjj8Oh-HAIqAe",
+  "name": "auth_middleware",
+  "type": "function",
+  "source": {
+    "https": "https://github.com/devthalal/razorpay.git",
+    "ssh": "git@github.com:devthalal/razorpay.git",
+    "branch": "block_auth_middleware"
+  },
+  "parentBlockIDs": [
+    "V9WSh95wP8Co3UxGRwNLN"
+  ],
+  "repoType": "mono",
+  "language": "nodejs",
+  "supportedAppblockVersions": [
+    "1.0.0"
+  ],
+  "isPublic": true,
+  "start": "node index.js"
+}

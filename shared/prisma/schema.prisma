@@ -24,8 +24,6 @@ model users {
 
   created_at DateTime? @default(now())
   updated_at DateTime? @updatedAt
-
-  subscriptions subscriptions[]
 }
 
 model admin_users {
@@ -42,24 +40,27 @@ model admin_users {
 
   created_at DateTime? @default(now())
   updated_at DateTime? @updatedAt
+
+  subscriptions subscriptions[]
+  plans         plans[]
 }
 
 model subscriptions {
   id        String   @id @default(cuid())
-  userId    String
   planId    String
   status    String // Active, Inactive, Cancelled, etc.
   startDate DateTime
   endDate   DateTime
   metadata  Json?
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
-  isSynced  Boolean  @default(false)
   serviceId String
   service   String
+  isSynced  Boolean  @default(false)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  createdBy String
 
-  user users @relation(fields: [userId], references: [id])
-  plan plans @relation(fields: [planId], references: [id])
+  admin admin_users @relation(fields: [createdBy], references: [id])
+  plan  plans       @relation(fields: [planId], references: [id])
 }
 
 model plans {
@@ -77,6 +78,8 @@ model plans {
   metadata      Json?
   createdAt     DateTime @default(now())
   updatedAt     DateTime @updatedAt
+  createdBy     String
 
+  admin         admin_users     @relation(fields: [createdBy], references: [id])
   subscriptions subscriptions[]
 }

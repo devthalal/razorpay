@@ -11,6 +11,11 @@
   "isPublic": true,
   "supportedAppblockVersions": ["1.0.0"],
   "repoType": "mono",
+  "middlewares": [
+    {
+      "middlewaresList": ["auth_middleware"]
+    }
+  ],
   "dependencies": {
     "shared": {
       "directory": "shared"
@@ -20,6 +25,9 @@
     },
     "admin": {
       "directory": "admin"
+    },
+    "auth_middleware": {
+      "directory": "auth_middleware"
     }
   }
 }

@@ -18,8 +18,6 @@ const createRazorpayPlan = async (req, planData) => {
       notes: data.metadata,
     })
 
-    console.log({ razorpayRes })
-
     await prisma.plans.update({
       where: { id },
       data: { isSynced: true, serviceId: razorpayRes.id, service: 'razorpay' },
