@@ -9,19 +9,17 @@
   },
   "parentBlockIDs": [],
   "isPublic": true,
-  "supportedAppblockVersions": [
-    "1.0.0"
-  ],
+  "supportedAppblockVersions": ["1.0.0"],
   "repoType": "mono",
   "dependencies": {
     "shared": {
       "directory": "shared"
     },
-    "razorpay_subscriptions": {
-      "directory": "razorpay_subscriptions"
-    },
     "vault": {
       "directory": "vault"
+    },
+    "admin": {
+      "directory": "admin"
     }
   }
 }

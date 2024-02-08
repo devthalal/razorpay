@@ -10,7 +10,7 @@ datasource db {
   url      = env("BB_DATABASE_URL")
 }
 
-model User {
+model users {
   id                String  @id @default(uuid())
   first_name        String
   middle_name       String?
@@ -25,10 +25,26 @@ model User {
   created_at DateTime? @default(now())
   updated_at DateTime? @updatedAt
 
-  subscriptions Subscription[]
+  subscriptions subscriptions[]
 }
 
-model Subscription {
+model admin_users {
+  id                String  @id @default(uuid())
+  first_name        String
+  middle_name       String?
+  last_name         String?
+  country_code      String?
+  phn_no            String? @unique
+  display_name      String
+  display_picture   String?
+  status            Int     @default(4)
+  is_email_verified Boolean @default(false)
+
+  created_at DateTime? @default(now())
+  updated_at DateTime? @updatedAt
+}
+
+model subscriptions {
   id        String   @id @default(cuid())
   userId    String
   planId    String
@@ -39,14 +55,18 @@ model Subscription {
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
   isSynced  Boolean  @default(false)
+  serviceId String
+  service   String
 
-  user User @relation(fields: [userId], references: [id])
-  plan Plan @relation(fields: [planId], references: [id])
+  user users @relation(fields: [userId], references: [id])
+  plan plans @relation(fields: [planId], references: [id])
 }
 
-model Plan {
+model plans {
   id            String   @id @default(cuid())
   name          String
+  serviceId     String?
+  service       String?
   amount        Int
   currency      String
   interval      String
@@ -58,5 +78,5 @@ model Plan {
   createdAt     DateTime @default(now())
   updatedAt     DateTime @updatedAt
 
-  subscriptions Subscription[]
+  subscriptions subscriptions[]
 }
