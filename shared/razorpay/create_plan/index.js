@@ -23,7 +23,7 @@ const createRazorpayPlan = async (req, planData) => {
       data: { isSynced: true, serviceId: razorpayRes.id, service: 'razorpay' },
     })
   } catch (error) {
-    console.log('error razorpay create')
+    console.log('Error razorpay create plan!!!')
     console.log(error)
   }
 }

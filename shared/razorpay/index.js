@@ -3,5 +3,13 @@
 import getRazorpayInstance from './module/index.js'
 import createRazorpayPlan from './create_plan/index.js'
 import listRazorpayPlans from './list_plans/index.js'
+import listRazorpaySubscriptions from './list_subscriptions/index.js'
+import createRazorpaySubscription from './create_subscription/index.js'
 
-export default { getRazorpayInstance, createRazorpayPlan, listRazorpayPlans }
+export default {
+  getRazorpayInstance,
+  createRazorpayPlan,
+  createRazorpaySubscription,
+  listRazorpayPlans,
+  listRazorpaySubscriptions,
+}

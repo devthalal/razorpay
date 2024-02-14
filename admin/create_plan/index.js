@@ -24,7 +24,6 @@ const handler = async (event) => {
 
     await razorpay.createRazorpayPlan(req, savedData)
   } catch (error) {
-    console.log(error);
     sendResponse(res, 400, { success: false, msg: error.message || `Something went wrong`, error })
   }
 }

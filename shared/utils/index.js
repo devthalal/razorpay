@@ -41,4 +41,10 @@ const healthCheck = (req, res) => {
 
 const currencyConvertor = (currency) => (currency ?? 0) * 100
 
-export default { healthCheck, getBody, sendResponse, currencyConvertor }
+const convertToUnixTimeStamp = (dateString) => {
+  const date = new Date(dateString)
+  const unixTimestamp = date.getTime()
+  return Math.floor(unixTimestamp / 1000)
+}
+
+export default { healthCheck, getBody, sendResponse, currencyConvertor, convertToUnixTimeStamp }
