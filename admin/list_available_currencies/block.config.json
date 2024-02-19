@@ -1,0 +1,21 @@
+{
+  "blockId": "QlRLOK13Exz0NKLTT4kwV",
+  "name": "list_available_currencies",
+  "type": "function",
+  "source": {
+    "https": "https://github.com/devthalal/razorpay.git",
+    "ssh": "git@github.com:devthalal/razorpay.git",
+    "branch": "block_list_available_currencies"
+  },
+  "parentBlockIDs": [
+    "V9WSh95wP8Co3UxGRwNLN",
+    "k2mPdGHgM-STUF3EGxO5K"
+  ],
+  "repoType": "mono",
+  "language": "nodejs",
+  "supportedAppblockVersions": [
+    "1.0.0"
+  ],
+  "isPublic": true,
+  "start": "node index.js"
+}

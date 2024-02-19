@@ -20,4 +20,13 @@ const createSubscriptionSchema = vine.object({
   serviceMeta: vine.object({}).allowUnknownProperties().optional(),
 })
 
-export default { createPlanSchema, createSubscriptionSchema }
+const availableCurrencySchema = vine.object({
+  searchKeyword: vine.string().optional(),
+  count: vine.number().optional(),
+  skip: vine.number().optional(),
+})
+
+
+
+
+export default { createPlanSchema, createSubscriptionSchema, availableCurrencySchema }

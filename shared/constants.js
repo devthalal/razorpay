@@ -8411,4 +8411,4 @@ const allowedCurrencyData = {
 }
 
 
-export default allowedCurrencyData
+export  default allowedCurrencyData

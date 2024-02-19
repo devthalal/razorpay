@@ -2,6 +2,7 @@
 import allowedCurrencyData from "../../constants.js"
 
 
+
 async function createCurrency(prisma) {
 
     Object.keys(allowedCurrencyData.countries).forEach(item=>{

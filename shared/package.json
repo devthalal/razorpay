@@ -4,7 +4,6 @@
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
-    "prepare": "npx husky install",
     "test": "npx jest",
     "lint:fix": "npx eslint *.js --fix",
     "format": "npx prettier ./**/*{.js,.json} --write",
