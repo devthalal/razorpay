@@ -24,6 +24,8 @@ model users {
 
   created_at DateTime? @default(now())
   updated_at DateTime? @updatedAt
+
+  subscriptions subscriptions[]
 }
 
 model admin_users {
@@ -46,20 +48,24 @@ model admin_users {
 }
 
 model subscriptions {
-  id        String   @id @default(cuid())
-  planId    String
-  status    String // Active, Inactive, Cancelled, etc.
-  startDate DateTime
-  endDate   DateTime
-  metadata  Json?
-  serviceId String
-  service   String
-  isSynced  Boolean  @default(false)
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
-  createdBy String
+  id          String    @id @default(cuid())
+  userId      String
+  planId      String
+  status      String? // Active, Inactive, Cancelled, etc.
+  cycleCount  Int
+  startDate   DateTime?
+  expiryDate  DateTime?
+  metadata    Json?
+  serviceMeta Json?
+  serviceId   String?
+  service     String?
+  isSynced    Boolean   @default(false)
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+  createdBy   String
 
   admin admin_users @relation(fields: [createdBy], references: [id])
+  user  users       @relation(fields: [userId], references: [id])
   plan  plans       @relation(fields: [planId], references: [id])
 }
 
