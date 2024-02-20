@@ -47,4 +47,20 @@ const convertToUnixTimeStamp = (dateString) => {
   return Math.floor(unixTimestamp / 1000)
 }
 
-export default { healthCheck, getBody, sendResponse, currencyConvertor, convertToUnixTimeStamp }
+const checkDefaultPlan = async (prisma, planName, planPeriod, currency) => {
+  const defaultCurrencyData = await prisma.$queryRaw`
+  with dc as (select cu.id,cu."currencyCode" from currency cu where "isDefault"),
+  pl as (select p.id,dc."currencyCode" from plans p,dc where p.currency=dc."currencyCode" and 
+  p.name=${planName} and p.interval=${planPeriod} )
+  select coalesce(pl.id,'') as "defaultPlanID",dc."currencyCode" as "defaultCurrencyCode" from dc left join pl on true
+    `
+
+  const { defaultPlanID , defaultCurrencyCode} = defaultCurrencyData[0]
+
+
+  if (defaultCurrencyCode !== currency && !(defaultPlanID.length > 0)) {
+    throw new Error('Please create plan in default currency first')
+  }
+}
+
+export default { healthCheck, getBody, sendResponse, currencyConvertor, convertToUnixTimeStamp, checkDefaultPlan }

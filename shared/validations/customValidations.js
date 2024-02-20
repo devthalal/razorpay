@@ -22,7 +22,6 @@ const validateCurrencyObjects = (arr) => {
     }
 
     if (!obj.hasOwnProperty('timeZone') || !(obj.timeZone.length > 0)) {
-
       return false
     }
 
@@ -32,5 +31,6 @@ const validateCurrencyObjects = (arr) => {
   // If all objects pass the validation, return true
   return true
 }
+
 
 export default { validateCurrencyObjects }
