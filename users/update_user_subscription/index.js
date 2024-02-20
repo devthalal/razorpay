@@ -19,10 +19,9 @@ const handler = async (event) => {
 
     if (!data) throw new Error('Subscription for user not found')
 
-    await razorpay.updateRazorpaySubscription(req, data)
+    await razorpay.updateRazorpaySubscription(req, { ...data, ...reqBody })
 
     sendResponse(res, 200, { success: true, msg: `Subscription updated successfully` })
-
   } catch (error) {
     sendResponse(res, 400, { success: false, msg: error.message || `Something went wrong`, error })
   }

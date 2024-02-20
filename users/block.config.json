@@ -23,6 +23,9 @@
     },
     "cancel_user_subscription": {
       "directory": "cancel_user_subscription"
+    },
+    "update_user_subscription": {
+      "directory": "update_user_subscription"
     }
   }
 }
