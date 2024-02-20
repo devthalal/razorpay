@@ -19,7 +19,7 @@ const handler = async (event) => {
       data: { id: nanoid(), createdBy: req.user.id, ...reqBody, amount: currencyConvertor(reqBody.amount) },
     })
 
-    // Add your code here
+
     sendResponse(res, 200, { success: true, msg: `Plan created successfully`, data: savedData })
 
     await razorpay.createRazorpayPlan(req, savedData)

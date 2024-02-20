@@ -26,7 +26,12 @@ const availableCurrencySchema = vine.object({
   skip: vine.number().optional(),
 })
 
+const updateSubscriptionSchema = vine.object({
+  planId: vine.string().optional(),
+  cycleCount: vine.number().optional(),
+  expiryDate: vine.date().optional(),
+  metadata: vine.object({}).allowUnknownProperties().optional(),
+  serviceMeta: vine.object({}).allowUnknownProperties().optional(),
+})
 
-
-
-export default { createPlanSchema, createSubscriptionSchema, availableCurrencySchema }
+export default { createPlanSchema, createSubscriptionSchema, updateSubscriptionSchema, availableCurrencySchema }
