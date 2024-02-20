@@ -5,4 +5,5 @@ const validateBody = async (data, schema) => {
   await vine.validate({ schema: schemas[schema], data })
 }
 
+
 export default validateBody

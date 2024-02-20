@@ -4,11 +4,12 @@
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
-    "prepare": "npx husky install",
     "test": "npx jest",
     "lint:fix": "npx eslint *.js --fix",
     "format": "npx prettier ./**/*{.js,.json} --write",
-    "pre-commit": "npx lint-staged"
+    "pre-commit": "npx lint-staged",
+    "prisma:seed:dev": "dotenv -e ../.env.function -- npx prisma db seed",
+    "prisma:db:push": "dotenv -e ../.env.function -- npx prisma db push"
   },
   "lint-staged": {
     "*.js": [
@@ -22,7 +23,9 @@
     "@prisma/client": "^5.9.1",
     "@vinejs/vine": "^1.7.1",
     "hashi-vault-js": "^0.4.14",
-    "razorpay": "^2.9.2"
+    "razorpay": "^2.9.2",
+    "dotenv": "^16.3.1",
+    "dotenv-cli": "7.3.0"
   },
   "devDependencies": {
     "@commitlint/cli": "15.0.0",

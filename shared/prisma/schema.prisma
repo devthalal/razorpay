@@ -89,3 +89,10 @@ model plans {
   admin         admin_users     @relation(fields: [createdBy], references: [id])
   subscriptions subscriptions[]
 }
+
+model currency {
+  id           String   @id @default(cuid())
+  countryName  String   @unique
+  currencyCode String?
+  timeZone     String[]
+}
