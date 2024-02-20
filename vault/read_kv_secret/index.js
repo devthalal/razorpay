@@ -14,7 +14,7 @@ const handler = async (event) => {
 
     const data= await vault.readKVSecret(process.env.VAULT_TOKEN, reqBody.key)
 
-    // Add your code here
+
     sendResponse(res, 200, { success: true, msg: `KV retrieved successfully`, data })
   } catch (error) {
     sendResponse(res, 400, { success: false, msg: `Something went wrong`, error })

@@ -2,12 +2,12 @@ import getRazorpayInstance from '../module/index.js'
 import prisma from '../../prisma/index.js'
 import utils from '../../utils/index.js'
 
-const createRazorpaySubscription = async (req, subscriptionData) => {
+const updateRazorpaySubscription = async (req, subscriptionData) => {
   try {
     const razorpayInstance = await getRazorpayInstance(req)
     const { id, ...data } = subscriptionData || {}
 
-    const razorpayRes = await razorpayInstance.subscriptions.create({
+    const razorpayRes = await razorpayInstance.subscriptions.update({
       plan_id: data.planId,
       total_count: data.cycleCount,
       addons: data.serviceMeta?.addons,
@@ -24,9 +24,9 @@ const createRazorpaySubscription = async (req, subscriptionData) => {
       data: { isSynced: true, serviceId: razorpayRes.id, service: 'razorpay' },
     })
   } catch (error) {
-    console.log('Error razorpay create subscription!!!')
+    console.log('Error razorpay update subscription!!!')
     console.log(error)
   }
 }
 
-export default createRazorpaySubscription
+export default updateRazorpaySubscription

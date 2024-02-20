@@ -20,4 +20,12 @@ const createSubscriptionSchema = vine.object({
   serviceMeta: vine.object({}).allowUnknownProperties().optional(),
 })
 
-export default { createPlanSchema, createSubscriptionSchema }
+const updateSubscriptionSchema = vine.object({
+  planId: vine.string().optional(),
+  cycleCount: vine.number().optional(),
+  expiryDate: vine.date().optional(),
+  metadata: vine.object({}).allowUnknownProperties().optional(),
+  serviceMeta: vine.object({}).allowUnknownProperties().optional(),
+})
+
+export default { createPlanSchema, createSubscriptionSchema, updateSubscriptionSchema }

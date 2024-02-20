@@ -1,5 +1,4 @@
 import { shared } from '@appblocks/node-sdk'
-import { nanoid } from 'nanoid'
 
 const handler = async (event) => {
   const { req, res } = event
@@ -12,18 +11,16 @@ const handler = async (event) => {
 
     const reqBody = await getBody(req)
 
-    await validateBody(reqBody, 'createSubscriptionSchema')
+    await validateBody(reqBody, 'updateSubscriptionSchema')
 
-    const savedData = await prisma.subscriptions.create({
-      id: nanoid(),
-      createdBy: req.user.id,
-      ...reqBody,
+    const savedData = await prisma.subscriptions.find({
+      where: { createdBy: req.user.id, id: reqBody.subscriptionId },
     })
 
+    await razorpay.updateRazorpaySubscription(req, savedData)
 
-    sendResponse(res, 200, { success: true, msg: `Subscription created successfully`, data: savedData })
+    sendResponse(res, 200, { success: true, msg: `Subscription updated successfully`, data: savedData })
 
-    await razorpay.createRazorpaySubscription(req, savedData)
   } catch (error) {
     sendResponse(res, 400, { success: false, msg: error.message || `Something went wrong`, error })
   }
