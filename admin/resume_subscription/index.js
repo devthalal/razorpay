@@ -15,8 +15,9 @@ const handler = async (event) => {
       where: { createdBy: req.user.id, id: reqBody.subscriptionId },
     })
 
-    await razorpay.resumeRazorpaySubscription(req, data)
+    if (!data) throw new Error('Subscription for user not found')
 
+    await razorpay.resumeRazorpaySubscription(req, data)
 
     sendResponse(res, 200, { success: true, msg: `Subscription resume successfully` })
   } catch (error) {

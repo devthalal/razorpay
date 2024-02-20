@@ -7,7 +7,7 @@ generator client {
 
 datasource db {
   provider = "postgresql"
-  url      = env("BB_DATABASE_URL")
+  url      = env("BB_RAZORPAY_DATABASE_URL")
 }
 
 model users {

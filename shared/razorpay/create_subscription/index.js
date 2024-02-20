@@ -21,12 +21,16 @@ const createRazorpaySubscription = async (req, subscriptionData) => {
 
     await prisma.subscriptions.update({
       where: { id },
-      data: { isSynced: true, serviceId: razorpayRes.id, service: 'razorpay' },
+      data: { isSynced: true, serviceId: razorpayRes.id, service: 'razorpay', serviceMeta: razorpayRes },
     })
+
+    return razorpayRes
   } catch (error) {
     console.log('Error razorpay create subscription!!!')
     console.log(error)
   }
+
+  return {}
 }
 
 export default createRazorpaySubscription

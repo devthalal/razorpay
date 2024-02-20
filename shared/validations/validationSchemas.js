@@ -20,6 +20,15 @@ const createSubscriptionSchema = vine.object({
   serviceMeta: vine.object({}).allowUnknownProperties().optional(),
 })
 
+const createUserSubscriptionSchema = vine.object({
+  planId: vine.string(),
+  cycleCount: vine.number(),
+  startDate: vine.date().optional(),
+  expiryDate: vine.date().optional(),
+  metadata: vine.object({}).allowUnknownProperties().optional(),
+  serviceMeta: vine.object({}).allowUnknownProperties().optional(),
+})
+
 const availableCurrencySchema = vine.object({
   searchKeyword: vine.string().optional(),
   count: vine.number().optional(),
@@ -34,4 +43,10 @@ const updateSubscriptionSchema = vine.object({
   serviceMeta: vine.object({}).allowUnknownProperties().optional(),
 })
 
-export default { createPlanSchema, createSubscriptionSchema, updateSubscriptionSchema, availableCurrencySchema }
+export default {
+  createPlanSchema,
+  createUserSubscriptionSchema,
+  createSubscriptionSchema,
+  updateSubscriptionSchema,
+  availableCurrencySchema,
+}

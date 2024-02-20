@@ -12,8 +12,17 @@
   "supportedAppblockVersions": ["1.0.0"],
   "isPublic": true,
   "dependencies": {
-    "list_plans": {
-      "directory": "list_plans"
+    "list_user_subscriptions": {
+      "directory": "list_user_subscriptions"
+    },
+    "list_user_plans": {
+      "directory": "list_user_plans"
+    },
+    "create_user_subscription": {
+      "directory": "create_user_subscription"
+    },
+    "cancel_user_subscription": {
+      "directory": "cancel_user_subscription"
     }
   }
 }

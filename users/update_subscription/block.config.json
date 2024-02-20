@@ -1,11 +1,11 @@
 {
   "blockId": "lidZk2pmWY0diJ64kCBje",
-  "name": "create_subscription",
+  "name": "update_subscription",
   "type": "function",
   "source": {
     "https": "https://github.com/devthalal/razorpay.git",
     "ssh": "git@github.com:devthalal/razorpay.git",
-    "branch": "block_create_subscription"
+    "branch": "block_update_subscription"
   },
   "parentBlockIDs": [
     "V9WSh95wP8Co3UxGRwNLN",

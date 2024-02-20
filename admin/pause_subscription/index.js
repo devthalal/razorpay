@@ -15,8 +15,9 @@ const handler = async (event) => {
       where: { createdBy: req.user.id, id: reqBody.subscriptionId },
     })
 
-    await razorpay.pauseRazorpaySubscription(req, data)
+    if (!data) throw new Error('Subscription for user not found')
 
+    await razorpay.pauseRazorpaySubscription(req, data)
 
     sendResponse(res, 200, { success: true, msg: `Subscription pause successfully` })
   } catch (error) {
