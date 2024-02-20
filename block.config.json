@@ -9,11 +9,15 @@
   },
   "parentBlockIDs": [],
   "isPublic": true,
-  "supportedAppblockVersions": ["1.0.0"],
+  "supportedAppblockVersions": [
+    "1.0.0"
+  ],
   "repoType": "mono",
   "middlewares": [
     {
-      "middlewaresList": ["auth_middleware"]
+      "middlewaresList": [
+        "auth_middleware"
+      ]
     }
   ],
   "dependencies": {
@@ -28,6 +32,9 @@
     },
     "auth_middleware": {
       "directory": "auth_middleware"
+    },
+    "users": {
+      "directory": "users"
     }
   }
 }

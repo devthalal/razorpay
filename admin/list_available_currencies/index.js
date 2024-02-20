@@ -3,7 +3,9 @@ import { shared } from '@appblocks/node-sdk'
 const handler = async (event) => {
   const { req, res } = event
 
-  const { healthCheck, sendResponse, getBody, validateBody, allowedCurrencyData } = await shared.getShared()
+  const { healthCheck, sendResponse, getBody, validateBody, constants } = await shared.getShared()
+
+  const allowedCurrencyData = constants.ALLOWED_CURRENCY_DATA
 
   try {
     // health check
@@ -13,7 +15,7 @@ const handler = async (event) => {
     await validateBody(reqBody, 'availableCurrencySchema')
 
     // eslint-disable-next-line prefer-const
-    let { searchKeyword = '', count=10, skip=0 } = reqBody
+    let { searchKeyword = '', count = 10, skip = 0 } = reqBody
 
     let currencyData = Object.keys(allowedCurrencyData.countries)
       .map((k) => allowedCurrencyData.countries[k])

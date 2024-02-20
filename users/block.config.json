@@ -1,0 +1,19 @@
+{
+  "blockId": "5tdKl_hGz4ICPlXinvUYl",
+  "name": "users",
+  "type": "package",
+  "source": {
+    "https": "https://github.com/devthalal/razorpay.git",
+    "ssh": "git@github.com:devthalal/razorpay.git",
+    "branch": "block_users"
+  },
+  "parentBlockIDs": ["V9WSh95wP8Co3UxGRwNLN"],
+  "repoType": "mono",
+  "supportedAppblockVersions": ["1.0.0"],
+  "isPublic": true,
+  "dependencies": {
+    "list_plans": {
+      "directory": "list_plans"
+    }
+  }
+}
