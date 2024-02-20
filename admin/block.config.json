@@ -7,9 +7,13 @@
     "ssh": "git@github.com:devthalal/razorpay.git",
     "branch": "block_admin"
   },
-  "parentBlockIDs": ["V9WSh95wP8Co3UxGRwNLN"],
+  "parentBlockIDs": [
+    "V9WSh95wP8Co3UxGRwNLN"
+  ],
   "repoType": "mono",
-  "supportedAppblockVersions": ["1.0.0"],
+  "supportedAppblockVersions": [
+    "1.0.0"
+  ],
   "isPublic": true,
   "dependencies": {
     "cancel_subscription": {
@@ -23,6 +27,15 @@
     },
     "list_plans": {
       "directory": "list_plans"
+    },
+    "list_available_currencies": {
+      "directory": "list_available_currencies"
+    },
+    "add_currency": {
+      "directory": "add_currency"
+    },
+    "list_added_currencies": {
+      "directory": "list_added_currencies"
     },
     "list_subscriptions": {
       "directory": "list_subscriptions"

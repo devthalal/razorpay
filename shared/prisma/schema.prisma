@@ -91,3 +91,10 @@ model plans {
 
   @@unique([name, currency, interval])
 }
+
+model currency {
+  id           String   @id @default(cuid())
+  countryName  String   @unique
+  currencyCode String?
+  timeZone     String[]
+}
