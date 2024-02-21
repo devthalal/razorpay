@@ -27,7 +27,7 @@ const createRazorpaySubscription = async (req, subscriptionData) => {
         isSynced: true,
         serviceId: razorpayRes.id,
         service: 'razorpay',
-        serviceMeta: { ...data.serviceMeta, razorpayRes },
+        serviceMeta: { ...data.serviceMeta, ...razorpayRes },
       },
     })
 

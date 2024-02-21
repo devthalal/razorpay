@@ -50,8 +50,6 @@ import { shared } from '@appblocks/node-sdk'
  *                   description: A message indicating the result of the operation.
  *                 data:
  *                   type: array
- *                   items:
- *                     $ref: '#/components/schemas/Plan'
  *       '400':
  *         description: Bad request with an error message.
  *         content:

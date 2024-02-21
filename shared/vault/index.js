@@ -3,7 +3,7 @@ import Vault from 'hashi-vault-js'
 // development config
 const vault = new Vault({
   //   https: true,
-  baseUrl: `${process.env.VAULT_ADDR}/v1`,
+  baseUrl: `${process.env.BB_RAZORPAY_VAULT_ADDR}/v1`,
   rootPath: 'secret',
   timeout: 5000,
   proxy: false,

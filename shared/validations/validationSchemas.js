@@ -14,8 +14,8 @@ const createSubscriptionSchema = vine.object({
   planId: vine.string(),
   userId: vine.string(),
   cycleCount: vine.number(),
-  startDate: vine.date({ formats: [`YYYY-MM-DD'T'HH:mm:ss.sssZ`] }).optional(),
-  expiryDate: vine.date({ formats: [`YYYY-MM-DD'T'HH:mm:ss.sssZ`] }).optional(),
+  startDate: vine.string().optional(),
+  expiryDate: vine.string().optional(),
   metadata: vine.object({}).allowUnknownProperties().optional(),
   serviceMeta: vine.object({}).allowUnknownProperties().optional(),
 })
@@ -23,8 +23,8 @@ const createSubscriptionSchema = vine.object({
 const createUserSubscriptionSchema = vine.object({
   planId: vine.string(),
   cycleCount: vine.number(),
-  startDate: vine.date({ formats: [`YYYY-MM-DD'T'HH:mm:ss.sssZ`] }).optional(),
-  expiryDate: vine.date({ formats: [`YYYY-MM-DD'T'HH:mm:ss.sssZ`] }).optional(),
+  startDate: vine.string().optional(),
+  expiryDate: vine.string().optional(),
   metadata: vine.object({}).allowUnknownProperties().optional(),
   serviceMeta: vine.object({}).allowUnknownProperties().optional(),
 })
@@ -38,7 +38,7 @@ const availableCurrencySchema = vine.object({
 const updateSubscriptionSchema = vine.object({
   planId: vine.string().optional(),
   cycleCount: vine.number().optional(),
-  expiryDate: vine.date().optional(),
+  expiryDate: vine.string().optional(),
   metadata: vine.object({}).allowUnknownProperties().optional(),
   serviceMeta: vine.object({}).allowUnknownProperties().optional(),
 })

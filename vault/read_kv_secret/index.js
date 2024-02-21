@@ -12,7 +12,7 @@ const handler = async (event) => {
 
     const reqBody = await getBody(req)
 
-    const data= await vault.readKVSecret(process.env.VAULT_TOKEN, reqBody.key)
+    const data= await vault.readKVSecret(process.env.BB_RAZORPAY_VAULT_TOKEN, reqBody.key)
 
 
     sendResponse(res, 200, { success: true, msg: `KV retrieved successfully`, data })
