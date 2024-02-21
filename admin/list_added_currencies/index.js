@@ -24,7 +24,8 @@ const handler = async (event) => {
       query.where = {
         ...query.where,
         countryName: {
-          contains: `%${searchKeyword}%`,
+          contains: `${searchKeyword}`,
+          mode: 'insensitive',
         },
       }
     }

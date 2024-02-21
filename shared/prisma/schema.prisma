@@ -97,4 +97,5 @@ model currency {
   countryName  String   @unique
   currencyCode String?
   timeZone     String[]
+  isDefault    Boolean  @default(false)
 }

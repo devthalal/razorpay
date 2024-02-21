@@ -42,6 +42,9 @@ const updateSubscriptionSchema = vine.object({
   metadata: vine.object({}).allowUnknownProperties().optional(),
   serviceMeta: vine.object({}).allowUnknownProperties().optional(),
 })
+const setDefaultCurrencySchema = vine.object({
+  currencyID: vine.string(),
+})
 
 export default {
   createPlanSchema,
@@ -49,4 +52,5 @@ export default {
   createSubscriptionSchema,
   updateSubscriptionSchema,
   availableCurrencySchema,
+  setDefaultCurrencySchema
 }

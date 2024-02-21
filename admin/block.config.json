@@ -48,6 +48,9 @@
     },
     "update_subscription": {
       "directory": "update_subscription"
+    },
+    "set_default_currency": {
+      "directory": "set_default_currency"
     }
   }
 }

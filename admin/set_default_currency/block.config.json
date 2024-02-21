@@ -1,0 +1,21 @@
+{
+  "blockId": "kb7nVXaK9ODbCnX1LPB3C",
+  "name": "set_default_currency",
+  "type": "function",
+  "source": {
+    "https": "https://github.com/devthalal/razorpay.git",
+    "ssh": "git@github.com:devthalal/razorpay.git",
+    "branch": "block_set_default_currency"
+  },
+  "parentBlockIDs": [
+    "V9WSh95wP8Co3UxGRwNLN",
+    "k2mPdGHgM-STUF3EGxO5K"
+  ],
+  "repoType": "mono",
+  "language": "nodejs",
+  "supportedAppblockVersions": [
+    "1.0.0"
+  ],
+  "isPublic": true,
+  "start": "node index.js"
+}
