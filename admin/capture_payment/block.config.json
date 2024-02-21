@@ -1,0 +1,21 @@
+{
+  "blockId": "aWLoDwrszE6aNfB-RTL6_",
+  "name": "capture_payment",
+  "type": "function",
+  "source": {
+    "https": "https://github.com/devthalal/razorpay.git",
+    "ssh": "git@github.com:devthalal/razorpay.git",
+    "branch": "block_capture_payment"
+  },
+  "parentBlockIDs": [
+    "V9WSh95wP8Co3UxGRwNLN",
+    "k2mPdGHgM-STUF3EGxO5K"
+  ],
+  "repoType": "mono",
+  "language": "nodejs",
+  "supportedAppblockVersions": [
+    "1.0.0"
+  ],
+  "isPublic": true,
+  "start": "node index.js"
+}

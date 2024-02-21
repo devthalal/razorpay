@@ -14,14 +14,18 @@ const handler = async (event) => {
 
     await validateBody(reqBody, 'createSubscriptionSchema')
 
+    const planData = await prisma.plans.findFirst({
+      where: { id: reqBody.planId },
+      select: { id: true, serviceId: true },
+    })
+    if (!planData) throw new Error('No plans found')
+
     const savedData = await prisma.subscriptions.create({
-      id: nanoid(),
-      createdBy: req.user.id,
-      ...reqBody,
+      data: { id: nanoid(), createdBy: req.user.id, ...reqBody },
     })
 
-
-    sendResponse(res, 200, { success: true, msg: `Subscription created successfully`, data: savedData })
+    savedData.planId = planData.serviceId
+    sendResponse(res, 200, { success: true, msg: `Subscription created successfully`, data: {savedData} })
 
     await razorpay.createRazorpaySubscription(req, savedData)
   } catch (error) {

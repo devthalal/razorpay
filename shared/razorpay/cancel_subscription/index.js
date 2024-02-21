@@ -1,7 +1,7 @@
 import getRazorpayInstance from '../module/index.js'
 import prisma from '../../prisma/index.js'
 
-const createRazorpaySubscription = async (req, subscriptionData) => {
+const cancelRazorpaySubscription = async (req, subscriptionData) => {
   try {
     const razorpayInstance = await getRazorpayInstance(req)
     const { id, serviceId } = subscriptionData || {}
@@ -10,9 +10,9 @@ const createRazorpaySubscription = async (req, subscriptionData) => {
 
     await prisma.subscriptions.update({ where: { id }, data: { status: 'cancelled' } })
   } catch (error) {
-    console.log('Error razorpay create subscription!!!')
+    console.log('Error razorpay cancel subscription!!!')
     console.log(error)
   }
 }
 
-export default createRazorpaySubscription
+export default cancelRazorpaySubscription

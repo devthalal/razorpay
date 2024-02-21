@@ -21,7 +21,7 @@ const updateRazorpaySubscription = async (req, subscriptionData) => {
 
     await prisma.subscriptions.update({
       where: { id },
-      data: { isSynced: true, serviceId: razorpayRes.id, service: 'razorpay' },
+      data: { isSynced: true, serviceId: razorpayRes.id, service: 'razorpay', ...data },
     })
   } catch (error) {
     console.log('Error razorpay update subscription!!!')

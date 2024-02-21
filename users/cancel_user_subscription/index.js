@@ -12,7 +12,7 @@ const handler = async (event) => {
     const reqBody = await getBody(req)
 
     const data = await prisma.subscriptions.find({
-      where: { createdBy: req.user.id, id: reqBody.subscriptionId },
+      where: { userId: req.user.id, id: reqBody.subscriptionId },
     })
 
     if (!data) throw new Error('Subscription for user not found')

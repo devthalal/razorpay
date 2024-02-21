@@ -3,7 +3,7 @@ import { shared } from '@appblocks/node-sdk'
 const handler = async (event) => {
   const { req, res } = event
 
-  const { prisma, healthCheck, sendResponse } = await shared.getShared()
+  const { razorpay, prisma, healthCheck, sendResponse } = await shared.getShared()
 
   try {
     // health check
@@ -18,8 +18,15 @@ const handler = async (event) => {
 
     const subscriptions = await prisma.subscriptions.findMany(query)
 
-    sendResponse(res, 200, { success: true, msg: `Subscription retrieved successfully`, data: subscriptions })
+    const razSubs = await razorpay.listRazorpaySubscriptions(req)
+
+    sendResponse(res, 200, {
+      success: true,
+      msg: `Subscription retrieved successfully`,
+      data: { subscriptions, razSubs },
+    })
   } catch (error) {
+    console.log(error);
     sendResponse(res, 400, { success: false, msg: `Something went wrong`, error })
   }
 }

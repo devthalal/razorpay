@@ -14,21 +14,26 @@ const handler = async (event) => {
 
     await validateBody(reqBody, 'createUserSubscriptionSchema')
 
+    const planData = await prisma.plans.findFirst({
+      where: { id: reqBody.planId },
+      select: { id: true, serviceId: true },
+    })
+    if (!planData) throw new Error('No plans found')
+
     const savedData = await prisma.subscriptions.create({
-      id: nanoid(),
-      createdBy: req.user.id,
-      userId: req.user.id,
-      ...reqBody,
+      data: { id: nanoid(), userId: req.user.id, ...reqBody },
     })
 
+    savedData.planId = planData.serviceId
     const subscribedData = await razorpay.createRazorpaySubscription(req, savedData)
 
     sendResponse(res, 200, {
       success: true,
       msg: `Subscription created successfully`,
-      data: { ...subscribedData, ...savedData },
+      data: { paymentUrl: subscribedData.short_url },
     })
   } catch (error) {
+    console.log(error)
     sendResponse(res, 400, { success: false, msg: error.message || `Something went wrong`, error })
   }
 }

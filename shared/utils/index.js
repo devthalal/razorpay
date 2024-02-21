@@ -55,8 +55,7 @@ const checkDefaultPlan = async (prisma, planName, planPeriod, currency) => {
   select coalesce(pl.id,'') as "defaultPlanID",dc."currencyCode" as "defaultCurrencyCode" from dc left join pl on true
     `
 
-  const { defaultPlanID , defaultCurrencyCode} = defaultCurrencyData[0]
-
+  const { defaultPlanID, defaultCurrencyCode } = defaultCurrencyData[0] ?? {}
 
   if (defaultCurrencyCode !== currency && !(defaultPlanID.length > 0)) {
     throw new Error('Please create plan in default currency first')

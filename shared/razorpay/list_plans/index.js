@@ -1,7 +1,6 @@
 import getRazorpayInstance from '../module/index.js'
 
-const listRazorpaySubscriptions = async (event) => {
-  const { req } = event
+const listRazorpayPlans = async (req) => {
 
   const razorpayInstance = await getRazorpayInstance(req)
 
@@ -12,8 +11,8 @@ const listRazorpaySubscriptions = async (event) => {
   if (count) query.count = count
   if (skip) query.skip = skip
 
-  const subscriptions = await razorpayInstance.subscriptions.all(query)
-  return subscriptions
+  const plans = await razorpayInstance.plans.all(query)
+  return plans
 }
 
-export default listRazorpaySubscriptions
+export default listRazorpayPlans

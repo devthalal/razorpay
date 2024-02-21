@@ -1,8 +1,6 @@
 import getRazorpayInstance from '../module/index.js'
 
-const listRazorpaySubscriptions = async (event) => {
-  const { req } = event
-
+const listRazorpaySubscriptions = async (req) => {
   const razorpayInstance = await getRazorpayInstance(req)
 
   const { from, to, count, skip } = req.query || {}

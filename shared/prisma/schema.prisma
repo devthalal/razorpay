@@ -48,31 +48,31 @@ model admin_users {
 }
 
 model subscriptions {
-  id          String    @id @default(cuid())
+  id          String    @id @default(uuid())
   userId      String
   planId      String
-  status      String? // active, inactive, cancelled, paused.
+  status      String?   @default("inactive") // active, inactive, cancelled, paused, authenticated
   cycleCount  Int
   startDate   DateTime?
   expiryDate  DateTime?
   metadata    Json?
   serviceMeta Json?
-  serviceId   String?
+  serviceId   String?   @unique
   service     String?
   isSynced    Boolean   @default(false)
   createdAt   DateTime  @default(now())
   updatedAt   DateTime  @updatedAt
-  createdBy   String
+  createdBy   String?
 
-  admin admin_users @relation(fields: [createdBy], references: [id])
-  user  users       @relation(fields: [userId], references: [id])
-  plan  plans       @relation(fields: [planId], references: [id])
+  admin admin_users? @relation(fields: [createdBy], references: [id])
+  user  users        @relation(fields: [userId], references: [id])
+  plan  plans        @relation(fields: [planId], references: [id])
 }
 
 model plans {
-  id            String   @id @default(cuid())
+  id            String   @id @default(uuid())
   name          String
-  serviceId     String?
+  serviceId     String?  @unique
   service       String?
   amount        Int
   currency      String
@@ -93,7 +93,7 @@ model plans {
 }
 
 model currency {
-  id           String   @id @default(cuid())
+  id           String   @id @default(uuid())
   countryName  String   @unique
   currencyCode String?
   timeZone     String[]

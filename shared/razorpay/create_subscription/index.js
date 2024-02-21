@@ -19,9 +19,16 @@ const createRazorpaySubscription = async (req, subscriptionData) => {
       expire_by: data.expiryDate ? utils.convertToUnixTimeStamp(data.expiryDate) : undefined,
     })
 
+    if (!data.serviceMeta) data.serviceMeta = {}
+
     await prisma.subscriptions.update({
       where: { id },
-      data: { isSynced: true, serviceId: razorpayRes.id, service: 'razorpay', serviceMeta: razorpayRes },
+      data: {
+        isSynced: true,
+        serviceId: razorpayRes.id,
+        service: 'razorpay',
+        serviceMeta: { ...data.serviceMeta, razorpayRes },
+      },
     })
 
     return razorpayRes

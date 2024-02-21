@@ -51,6 +51,9 @@
     },
     "set_default_currency": {
       "directory": "set_default_currency"
+    },
+    "capture_payment": {
+      "directory": "capture_payment"
     }
   }
 }
