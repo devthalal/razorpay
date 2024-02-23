@@ -13,15 +13,24 @@ const handler = async (event) => {
 
     await validateBody(reqBody, 'updateSubscriptionSchema')
 
-    const data = await prisma.subscriptions.find({
+    const data = await prisma.subscriptions.findFirst({
       where: { userId: req.user.id, id: reqBody.subscriptionId },
     })
 
     if (!data) throw new Error('Subscription for user not found')
 
+    let plan
+    if (reqBody.planId) {
+      plan = await prisma.plans.findFirst({
+        where: { isSynced: true, id: reqBody.planId },
+      })
+
+      if (!plan) throw new Error('Plan not found')
+    }
+
     delete reqBody.subscriptionId
 
-    await razorpay.updateRazorpaySubscription(req, { ...data, ...reqBody })
+    await razorpay.updateRazorpaySubscription(req, { ...data, ...reqBody, planServiceId: plan?.serviceId })
 
     sendResponse(res, 200, { success: true, msg: `Subscription updated successfully` })
   } catch (error) {

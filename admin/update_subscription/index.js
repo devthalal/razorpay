@@ -13,7 +13,7 @@ const handler = async (event) => {
 
     await validateBody(reqBody, 'updateSubscriptionSchema')
 
-    const data = await prisma.subscriptions.find({
+    const data = await prisma.subscriptions.findFirst({
       where: { createdBy: req.user.id, id: reqBody.subscriptionId },
     })
 

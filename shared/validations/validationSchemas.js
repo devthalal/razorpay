@@ -38,10 +38,9 @@ const availableCurrencySchema = vine.object({
 const updateSubscriptionSchema = vine.object({
   planId: vine.string().optional(),
   cycleCount: vine.number().optional(),
-  expiryDate: vine.string().optional(),
   metadata: vine.object({}).allowUnknownProperties().optional(),
-  serviceMeta: vine.object({}).allowUnknownProperties().optional(),
 })
+
 const setDefaultCurrencySchema = vine.object({
   currencyID: vine.string(),
 })

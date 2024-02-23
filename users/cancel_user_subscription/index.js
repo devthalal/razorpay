@@ -11,7 +11,7 @@ const handler = async (event) => {
 
     const reqBody = await getBody(req)
 
-    const data = await prisma.subscriptions.find({
+    const data = await prisma.subscriptions.findFirst({
       where: { userId: req.user.id, id: reqBody.subscriptionId },
     })
 

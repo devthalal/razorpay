@@ -7,9 +7,7 @@ const updateRazorpaySubscription = async (req, subscriptionData) => {
     const razorpayInstance = await getRazorpayInstance(req)
     const { id, ...data } = subscriptionData || {}
 
-    const razorpayRes = await razorpayInstance.subscriptions.update({
-      plan_id: data.planId,
-      total_count: data.cycleCount,
+    const updateData = {
       addons: data.serviceMeta?.addons,
       offer_id: data.serviceMeta?.offerId,
       customer_notify: data.serviceMeta?.customerNotify,
@@ -17,15 +15,20 @@ const updateRazorpaySubscription = async (req, subscriptionData) => {
       notes: data.metadata,
       start_at: data.startDate ? utils.convertToUnixTimeStamp(data.startDate) : undefined,
       expire_by: data.expiryDate ? utils.convertToUnixTimeStamp(data.expiryDate) : undefined,
-    })
+    }
 
-    await prisma.subscriptions.update({
-      where: { id },
-      data: { isSynced: true, serviceId: razorpayRes.id, service: 'razorpay', ...data },
-    })
+    if (data.planServiceId) updateData.plan_id = data.planServiceId
+    else if (data.cycleCount) updateData.total_count = data.cycleCount
+
+    await razorpayInstance.subscriptions.update(data.serviceId, updateData)
+
+    delete data.planServiceId
+
+    await prisma.subscriptions.update({ where: { id }, data })
+
   } catch (error) {
-    console.log('Error razorpay update subscription!!!')
-    console.log(error)
+    console.log('Error razorpay update subscription!!!\n', error)
+    throw error
   }
 }
 

@@ -15,7 +15,7 @@ const createRazorpaySubscription = async (req, subscriptionData) => {
       customer_notify: data.serviceMeta?.customerNotify,
       quantity: data.serviceMeta?.quantity,
       notes: data.metadata,
-      start_at: data.startDate ? utils.convertToUnixTimeStamp(data.startDate) : undefined,
+      start_at: data.startDate ? utils.convertToUnixTimeStamp(data.startDate) : undefined, // can be used for trial period setup
       expire_by: data.expiryDate ? utils.convertToUnixTimeStamp(data.expiryDate) : undefined,
     })
 
