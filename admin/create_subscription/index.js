@@ -4,7 +4,7 @@ import { nanoid } from 'nanoid'
 const handler = async (event) => {
   const { req, res } = event
 
-  const { razorpay, prisma, healthCheck, getBody, sendResponse, validateBody } = await shared.getShared()
+  const { razorpay, prisma, healthCheck, getBody, sendResponse, validateBody, constants } = await shared.getShared()
 
   try {
     // health check
@@ -20,12 +20,18 @@ const handler = async (event) => {
     })
     if (!planData) throw new Error('No plans found')
 
+    if (!reqBody.startDate) {
+      const trailDate = new Date()
+      trailDate.setDate(trailDate.getDate() + constants.DEFAULT_TRAIL_DAYS)
+      reqBody.startDate = trailDate
+    }
+
     const savedData = await prisma.subscriptions.create({
       data: { id: nanoid(), createdBy: req.user.id, ...reqBody },
     })
 
     savedData.planId = planData.serviceId
-    sendResponse(res, 200, { success: true, msg: `Subscription created successfully`, data: {savedData} })
+    sendResponse(res, 200, { success: true, msg: `Subscription created successfully`, data: { savedData } })
 
     await razorpay.createRazorpaySubscription(req, savedData)
   } catch (error) {

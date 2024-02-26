@@ -9,6 +9,7 @@ import createRazorpaySubscription from './create_subscription/index.js'
 import updateRazorpaySubscription from './update_subscription/index.js'
 import resumeRazorpaySubscription from './resume_subscription/index.js'
 import pauseRazorpaySubscription from './pause_subscription/index.js'
+import listRazorpaySubscriptionInvoices from './list_subscription_invoices/index.js'
 
 export default {
   getRazorpayInstance,
@@ -20,4 +21,5 @@ export default {
   resumeRazorpaySubscription,
   pauseRazorpaySubscription,
   cancelRazorpaySubscription,
+  listRazorpaySubscriptionInvoices,
 }

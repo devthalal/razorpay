@@ -1,5 +1,6 @@
 import getRazorpayInstance from '../module/index.js'
 import prisma from '../../prisma/index.js'
+import utils from '../../utils/index.js'
 
 const createRazorpayPlan = async (req, planData) => {
   try {
@@ -9,7 +10,7 @@ const createRazorpayPlan = async (req, planData) => {
     const razorpayRes = await razorpayInstance.plans.create({
       item: {
         name: data.name,
-        amount: data.amount,
+        amount: utils.currencyConvertor(data.amount),
         currency: data.currency,
         description: data.description,
       },

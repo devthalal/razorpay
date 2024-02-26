@@ -22,7 +22,8 @@
     "author": "",
     "license": "ISC",
     "dependencies": {
-      "express": "^4.17.3"
+      "express": "^4.17.3",
+      "@appblocks/node-sdk": "^0.0.7"
      },
     "devDependencies":{
       "@types/node":"16.9.6",

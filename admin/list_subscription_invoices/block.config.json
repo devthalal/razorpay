@@ -1,0 +1,21 @@
+{
+  "blockId": "mnl5NwC4jfV-LYxHlkL3F",
+  "name": "list_subscription_invoices",
+  "type": "function",
+  "source": {
+    "https": "https://github.com/devthalal/razorpay.git",
+    "ssh": "git@github.com:devthalal/razorpay.git",
+    "branch": "block_list_subscription_invoices"
+  },
+  "parentBlockIDs": [
+    "V9WSh95wP8Co3UxGRwNLN",
+    "k2mPdGHgM-STUF3EGxO5K"
+  ],
+  "repoType": "mono",
+  "language": "nodejs",
+  "supportedAppblockVersions": [
+    "1.0.0"
+  ],
+  "isPublic": true,
+  "start": "node index.js"
+}

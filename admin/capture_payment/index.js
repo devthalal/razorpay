@@ -11,7 +11,9 @@ const handler = async (event) => {
 
     const reqBody = await getBody(req)
 
+    console.log(`======WEBHOOK ${reqBody.event}======\n`)
     console.log(JSON.stringify(reqBody))
+    console.log(`\n======WEBHOOK payload END======\n`)
 
     // ==== Subscribed Webhooks ====
     // payment.failed
@@ -20,13 +22,34 @@ const handler = async (event) => {
 
     if (reqBody.event.includes('subscription.')) {
       const subscribedData = reqBody.payload.subscription.entity
+
       await prisma.subscriptions.update({
         where: {
           serviceId: subscribedData.id,
           service: 'razorpay',
         },
         data: {
-          status: subscribedData.status === 'completed' ? 'authenticated' : subscribedData.status,
+          status: subscribedData.status,
+        },
+      })
+    } else if (reqBody.event.includes('invoice.')) {
+      const invoiceData = reqBody.payload.invoice.entity
+
+      const subscriptionData = await prisma.subscriptions.findFirst({
+        where: {
+          serviceId: invoiceData.subscription_id,
+        },
+        include: {
+          plan: true,
+        },
+      })
+
+      await prisma.subscription_invoices.create({
+        data: {
+          serviceId: invoiceData.id,
+          serviceMeta: invoiceData,
+          subscriptionId: subscriptionData.id,
+          planId: subscriptionData.plan.id,
         },
       })
     }

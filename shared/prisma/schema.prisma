@@ -67,6 +67,19 @@ model subscriptions {
   admin admin_users? @relation(fields: [createdBy], references: [id])
   user  users        @relation(fields: [userId], references: [id])
   plan  plans        @relation(fields: [planId], references: [id])
+
+  @@unique([planId, userId])
+}
+
+model subscription_invoices {
+  id             String   @id @default(uuid())
+  subscriptionId String
+  planId         String
+  serviceMeta    Json?
+  serviceId      String?  @unique
+  isSynced       Boolean  @default(false)
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
 }
 
 model plans {

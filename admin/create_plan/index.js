@@ -4,7 +4,7 @@ import { nanoid } from 'nanoid'
 const handler = async (event) => {
   const { req, res } = event
 
-  const { prisma, healthCheck, getBody, sendResponse, currencyConvertor, validateBody, checkDefaultPlan, razorpay } =
+  const { prisma, healthCheck, getBody, sendResponse, validateBody, checkDefaultPlan, razorpay } =
     await shared.getShared()
 
   try {
@@ -18,7 +18,7 @@ const handler = async (event) => {
     await checkDefaultPlan(prisma, reqBody.name, reqBody.interval, reqBody.currency)
 
     const savedData = await prisma.plans.create({
-      data: { id: nanoid(), createdBy: req.user.id, ...reqBody, amount: currencyConvertor(reqBody.amount) },
+      data: { id: nanoid(), createdBy: req.user.id, ...reqBody },
     })
 
     sendResponse(res, 200, { success: true, msg: `Plan created successfully`, data: savedData })

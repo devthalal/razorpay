@@ -7,13 +7,9 @@
     "ssh": "git@github.com:devthalal/razorpay.git",
     "branch": "block_admin"
   },
-  "parentBlockIDs": [
-    "V9WSh95wP8Co3UxGRwNLN"
-  ],
+  "parentBlockIDs": ["V9WSh95wP8Co3UxGRwNLN"],
   "repoType": "mono",
-  "supportedAppblockVersions": [
-    "1.0.0"
-  ],
+  "supportedAppblockVersions": ["1.0.0"],
   "isPublic": true,
   "dependencies": {
     "cancel_subscription": {
@@ -54,6 +50,9 @@
     },
     "capture_payment": {
       "directory": "capture_payment"
+    },
+    "list_subscription_invoices": {
+      "directory": "list_subscription_invoices"
     }
   }
 }
