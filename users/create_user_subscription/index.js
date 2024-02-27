@@ -23,7 +23,7 @@ const handler = async (event) => {
     const trailDate = new Date()
     trailDate.setDate(trailDate.getDate() + constants.DEFAULT_TRAIL_DAYS)
 
-    reqBody.startDate = trailDate
+    // reqBody.startDate = trailDate
 
     const savedData = await prisma.subscriptions.create({
       data: { id: nanoid(), userId: req.user.id, ...reqBody },

@@ -51,7 +51,9 @@ model subscriptions {
   id          String    @id @default(uuid())
   userId      String
   planId      String
-  status      String?   @default("inactive") // active, inactive, cancelled, paused, authenticated
+  status      String?   @default("inactive")
+  // active, inactive, cancelled, paused, authenticated, completed
+  // https://razorpay.com/docs/webhooks/payloads/subscriptions/
   cycleCount  Int
   startDate   DateTime?
   expiryDate  DateTime?

@@ -26,6 +26,9 @@
     },
     "update_user_subscription": {
       "directory": "update_user_subscription"
+    },
+    "list_user_subscription_invoices": {
+      "directory": "list_user_subscription_invoices"
     }
   }
 }
