@@ -64,9 +64,10 @@ model subscriptions {
   updatedAt   DateTime  @updatedAt
   createdBy   String?
 
-  admin admin_users? @relation(fields: [createdBy], references: [id])
-  user  users        @relation(fields: [userId], references: [id])
-  plan  plans        @relation(fields: [planId], references: [id])
+  admin                 admin_users?            @relation(fields: [createdBy], references: [id])
+  user                  users                   @relation(fields: [userId], references: [id])
+  plan                  plans                   @relation(fields: [planId], references: [id])
+  subscription_invoices subscription_invoices[]
 
   @@unique([planId, userId])
 }
@@ -80,6 +81,9 @@ model subscription_invoices {
   isSynced       Boolean  @default(false)
   createdAt      DateTime @default(now())
   updatedAt      DateTime @updatedAt
+
+  subscription subscriptions @relation(fields: [subscriptionId], references: [id])
+  plan         plans         @relation(fields: [planId], references: [id])
 }
 
 model plans {
@@ -99,8 +103,9 @@ model plans {
   updatedAt     DateTime @updatedAt
   createdBy     String
 
-  admin         admin_users     @relation(fields: [createdBy], references: [id])
-  subscriptions subscriptions[]
+  admin                 admin_users             @relation(fields: [createdBy], references: [id])
+  subscriptions         subscriptions[]
+  subscription_invoices subscription_invoices[]
 
   @@unique([name, currency, interval])
 }

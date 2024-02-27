@@ -16,9 +16,9 @@ const handler = async (event) => {
     console.log(`\n======WEBHOOK payload END======\n`)
 
     // ==== Subscribed Webhooks ====
-    // payment.failed
     // subscription.activated
     // subscription.authenticated
+    // invoice.paid
 
     if (reqBody.event.includes('subscription.')) {
       const subscribedData = reqBody.payload.subscription.entity

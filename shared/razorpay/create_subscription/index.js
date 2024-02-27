@@ -7,8 +7,6 @@ const createRazorpaySubscription = async (req, subscriptionData) => {
     const razorpayInstance = await getRazorpayInstance(req)
     const { id, ...data } = subscriptionData || {}
 
-    console.log({ start_at: data.startDate ? utils.convertToUnixTimeStamp(data.startDate) : undefined })
-    
     const razorpayRes = await razorpayInstance.subscriptions.create({
       plan_id: data.planId,
       total_count: data.cycleCount,
