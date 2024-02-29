@@ -1,0 +1,21 @@
+{
+  "blockId": "YiClLkUtUnjbvOs7ONRPt",
+  "name": "add_user_address",
+  "type": "function",
+  "source": {
+    "https": "https://github.com/devthalal/razorpay.git",
+    "ssh": "git@github.com:devthalal/razorpay.git",
+    "branch": "block_add_user_address"
+  },
+  "parentBlockIDs": [
+    "GQ09UgGv7CHlU_eM4uZOf",
+    "6dA-cog3aRgki33G4MuB2"
+  ],
+  "repoType": "mono",
+  "language": "nodejs",
+  "supportedAppblockVersions": [
+    "1.0.0"
+  ],
+  "isPublic": true,
+  "start": "node index.js"
+}

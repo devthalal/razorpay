@@ -29,6 +29,15 @@
     },
     "list_user_subscription_invoices": {
       "directory": "list_user_subscription_invoices"
+    },
+    "add_user_address": {
+      "directory": "add_user_address"
+    },
+    "update_user_address": {
+      "directory": "update_user_address"
+    },
+    "list_user_addresses": {
+      "directory": "list_user_addresses"
     }
   }
 }

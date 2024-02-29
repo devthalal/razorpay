@@ -26,6 +26,7 @@ model users {
   updatedAt DateTime? @updatedAt
 
   subscriptions subscriptions[]
+  address       addresses[]
 }
 
 model admin_users {
@@ -118,4 +119,26 @@ model currency {
   currencyCode String?
   timeZone     String[]
   isDefault    Boolean  @default(false)
+}
+
+model addresses {
+  id          String   @id @default(uuid())
+  userId      String
+  addressType String
+  isPrimary   Boolean? @default(false)
+  name        String
+  line1       String
+  line2       String?
+  line3       String?
+  city        String
+  state       String
+  country     String
+  postalCode  String
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  user users @relation(fields: [userId], references: [id])
+
+  @@unique([userId, isPrimary])
 }

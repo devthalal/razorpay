@@ -45,11 +45,40 @@ const setDefaultCurrencySchema = vine.object({
   currencyID: vine.string(),
 })
 
+const addUserAddressSchema = vine.object({
+  isPrimary: vine.boolean().optional(),
+  name: vine.string(),
+  line1: vine.string(),
+  line2: vine.string().optional(),
+  line3: vine.string().optional(),
+  city: vine.string(),
+  state: vine.string(),
+  country: vine.string(),
+  postalCode: vine.string(),
+  addressType: vine.enum(['billing_address', 'shipping_address']),
+})
+
+const updateUserAddressSchema = vine.object({
+  id: vine.string(),
+  isPrimary: vine.boolean().optional(),
+  name: vine.string().optional(),
+  line1: vine.string(),
+  line2: vine.string().optional(),
+  line3: vine.string().optional(),
+  city: vine.string().optional(),
+  state: vine.string().optional(),
+  country: vine.string().optional(),
+  postalCode: vine.string().optional(),
+  addressType: vine.enum(['billing_address', 'shipping_address']).optional(),
+})
+
 export default {
+  addUserAddressSchema,
   createPlanSchema,
   createUserSubscriptionSchema,
   createSubscriptionSchema,
   updateSubscriptionSchema,
+  updateUserAddressSchema,
   availableCurrencySchema,
   setDefaultCurrencySchema,
 }

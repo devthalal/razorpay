@@ -1,11 +1,11 @@
 import { PrismaClient } from '@prisma/client'
-// eslint-disable-next-line import/extensions
+import addUsers from './seeder/users_seed.js'
 
 const prisma = new PrismaClient()
 
 async function main() {
   // await createCurrency(prisma)
- 
+  await addUsers(prisma)
 }
 
 main()
